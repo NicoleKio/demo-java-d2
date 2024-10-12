@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: demo-java-d2
+
+
+reference-data:
+  engineTypes: Бензиновий, Дизельний, Гібридний
