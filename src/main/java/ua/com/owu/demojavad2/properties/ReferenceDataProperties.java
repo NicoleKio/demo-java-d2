@@ -1,4 +1,4 @@
-package properties;
+package ua.com.owu.demojavad2.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,6 +10,6 @@ import java.util.List;
 @Component
 @ConfigurationProperties(prefix = "reference-data")
 public class ReferenceDataProperties {
-    private List<String> raceTypes;
-    private List<Weapon> weapons;
+    private List<String> engineTypes;
+    private List<Fuel> fuels;
 }
