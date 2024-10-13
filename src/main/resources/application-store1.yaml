@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo-java-d2
+
+
+reference-data:
+  raceTypes: vampire, aggel, human, mavka
+  weapons:
+    - name: mass destruction
+      instances: Yukiss Rapiers, Luticoria's Submachine Gun, Nygrim's Alibard
+    - name: single target
+      instances: Lacus' scythe, Sophie's bow
+    - name: control
+      instances: Agafonica's sickle, Adelaide's eyes, Minerva's voice
