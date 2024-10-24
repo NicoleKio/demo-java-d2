@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ua.com.owu.demojavad2.properties.ReferenceDataProperties;
 import ua.com.owu.demojavad2.properties.Weapon;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/asd")
 public class ReferenceDataController {
     public final ReferenceDataProperties referenceDataProperties;
 
@@ -39,6 +41,12 @@ public class ReferenceDataController {
                 .findFirst();
 
         return ResponseEntity.of(result);
+    }
+
+
+    @GetMapping("/test")
+    public String test() {
+        return "Test successful!";
     }
 }
 

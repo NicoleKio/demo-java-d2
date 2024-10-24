@@ -2,7 +2,6 @@ spring:
   application:
     name: demo-java-d2
 
-
 reference-data:
   raceTypes: vampire, aggel, human, mavka
   weapons:

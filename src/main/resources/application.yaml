@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-java-d2
+    name: march-2024-spring
 
-    profiles:
-      active: store1
+  profiles:
+    active: store1
