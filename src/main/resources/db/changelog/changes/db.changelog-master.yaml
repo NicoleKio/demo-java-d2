@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1.0.1"
+      author: "NicoleD"
+      changes:
+        - createSequence:
+            sequenceName: "cars_seq"
+        - createTable:
+            tableName: "cars"
+            columns:
+              - column:
+                  name: "id"
+                  type: "bigint"
+                  constraints:
+                    primaryKey: true
+                  defaultValueSequenceNext: "cars_seq"
+              - column:
+                  name: "name"
+                  type: "text"
+              - column:
+                  name: "price"
+                  type: "numeric"
+              - column:
+                  name: "availability"
+                  type: "varchar(50)"
+  - changeSet:
+      id: "1.0.2"
+      author: "NicoleD"
+      changes:
+        - addColumn:
+            tableName: "cars"
+            columns:
+              - column:
+                  name: "temp_availability"
+                  type: "smallint"
+        - sqlFile:
+            path: "classpath:/db/changelog/changes/update-availability-values.sql"
+        - dropColumn:
+            columnName: "availability"
+            tableName: "cars"
+        - renameColumn:
+            oldColumnName: "temp_availability"
+            newColumnName: "availability"
+            tableName: "cars"

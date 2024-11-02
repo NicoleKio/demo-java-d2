@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: demo-java-d2
+
+
+  profiles:
+    active: store1
