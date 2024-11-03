@@ -17,6 +17,7 @@ public class CarController {
     @GetMapping("/cars")
     public ResponseEntity<List<Car>> getCars() {
         return ResponseEntity.ok(carProperties.getCars());
+
     }
 
     @GetMapping("/cars/{id}")
@@ -35,6 +36,18 @@ public class CarController {
     public ResponseEntity<Car> addCar(@RequestBody Car car) {
         return ResponseEntity.ok(carProperties.getCars().set(car.getId(), car));
     }
+
+    @PutMapping("/cars/{id}")
+    public ResponseEntity<Car> updateCar(@PathVariable int id, @RequestBody Car car) {
+        return ResponseEntity.ok(carProperties.getCars().set(id, car));
+    }
+
+    @DeleteMapping("/cars/{id}")
+    public ResponseEntity<Car> deleteCar(@PathVariable int id) {
+        return ResponseEntity.ok(carProperties.getCars().remove(id));
+    }
+
+
 
 
 

@@ -1,7 +1,17 @@
 spring:
   application:
     name: demo-java-d2
-
-
   profiles:
     active: store1
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/XXX"
+    username: "postgres"
+    password: "postgres"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
