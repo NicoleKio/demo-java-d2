@@ -42,3 +42,26 @@ databaseChangeLog:
             oldColumnName: "temp_availability"
             newColumnName: "availability"
             tableName: "cars"
+
+  - changeSet:
+      id: "1.0.3"
+      author: "NicoleD"
+      changes:
+        - addColumn:
+            tableName: "cars"
+            columns:
+              - column:
+                  name: "torque"
+                  type: "smallint"
+                  constraints:
+                    nullable: false    # Задає обов'язковість заповнення
+                  defaultValue: 0
+        - sqlFile:
+            path: "classpath:/db/changelog/changes/update-availability-values.sql"
+#        - dropColumn:
+#            columnName: "availability"
+#            tableName: "cars"
+#        - renameColumn:
+#            oldColumnName: "temp_availability"
+#            newColumnName: "availability"
+#            tableName: "cars"
