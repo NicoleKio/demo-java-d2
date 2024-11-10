@@ -5,7 +5,9 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ua.com.owu.demojavad2.dto.CarDTO;
 import ua.com.owu.demojavad2.entities.Car;
+import ua.com.owu.demojavad2.mapper.CarMapper;
 import ua.com.owu.demojavad2.repository.CarRepository;
 
 import java.util.*;
@@ -15,18 +17,36 @@ import java.util.*;
 public class CarController {
 
     private final CarRepository carRepository;
+    private final CarMapper carMapper;
 
 
+//    @GetMapping("/cars")
+//    public ResponseEntity<List<Car>> getCars() {
+//        return ResponseEntity.ok(carRepository.findAll());
+//
+//    }
     @GetMapping("/cars")
-    public ResponseEntity<List<Car>> getCars() {
-        return ResponseEntity.ok(carRepository.findAll());
-
+    public ResponseEntity<List<CarDTO>> getCars() {
+        return ResponseEntity
+                .ok(carRepository
+                        .findAll()
+                        .stream()
+                        .map(carMapper::mapToDTO)
+                        .toList());
     }
+
+//    @PostMapping("/cars")
+//    public Car createCar(@RequestBody Car car) {
+//        return carRepository.save(car);
+//    }
 
     @PostMapping("/cars")
-    public Car createCar(@RequestBody Car car) {
-        return carRepository.save(car);
+    public ResponseEntity<CarDTO> addCar(@RequestBody CarDTO dto) {
+        Car savedCar = carMapper.mapToEntity(dto);
+        CarDTO carDTO = carMapper.mapToDTO(savedCar);
+        return ResponseEntity.ok(carDTO);
     }
+
 
     @GetMapping("/cars/{id}")
     public ResponseEntity<Car> getCar(@PathVariable Long id) {

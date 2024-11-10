@@ -10,9 +10,6 @@ import java.util.List;
 public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> findAllByEnginePowerBetween(Double enginePower, Double enginePower2);
 
-//    @Query("select c from Car c where c.enginePower > :minEnginePower and c.enginePower < :maxEnginePower)
-//    List<Car> findAllByEnginePowerBetween
-
     List<Car> findAllByEnginePowerGreaterThan(Double minEnginePower);
     List<Car> findAllByEnginePowerLessThan(Double maxEnginePower);
 
