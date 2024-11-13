@@ -7,7 +7,7 @@ import ua.com.owu.demojavad2.entities.Car;
 import java.util.List;
 
 @Repository
-public interface CarRepository extends JpaRepository<Car, Long> {
+public interface CarRepository extends JpaRepository<Car, Integer> {
     List<Car> findAllByEnginePowerBetween(Double enginePower, Double enginePower2);
 
     List<Car> findAllByEnginePowerGreaterThan(Double minEnginePower);
