@@ -12,5 +12,4 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findAllByEnginePowerGreaterThan(Double minEnginePower);
     List<Car> findAllByEnginePowerLessThan(Double maxEnginePower);
-
 }

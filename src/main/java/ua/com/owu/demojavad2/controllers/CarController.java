@@ -23,10 +23,12 @@ public class CarController {
         return ResponseEntity.ok(carService.getCars());
     }
 
+
     @PostMapping()
     public ResponseEntity<CarDTO> addCar(@RequestBody @Valid CarDTO carDTO) {
         return ResponseEntity.ok(carService.addCar(carDTO));
     }
+
 
 
     @GetMapping("/{id}")
@@ -35,25 +37,8 @@ public class CarController {
     }
 
 
-//    @GetMapping("/carslist")
-//    public ResponseEntity<List<Car>> getCarslist(
-//            @RequestParam(name = "minEnginePower", required = false) Double minEnginePower,
-//            @RequestParam(name = "maxEnginePower", required = false) Double maxEnginePower
-//    ) {
-//
-//        if (minEnginePower != null && maxEnginePower != null) {
-//            return ResponseEntity.ok(carRepository.findAllByEnginePowerBetween(minEnginePower, maxEnginePower));
-//        } else if (minEnginePower != null) {
-//            return ResponseEntity.ok(carRepository.findAllByEnginePowerGreaterThan(minEnginePower));
-//        } else if (maxEnginePower != null) {
-//            return ResponseEntity.ok(carRepository.findAllByEnginePowerLessThan(maxEnginePower));
-//        } else {
-//            return ResponseEntity.ok(carRepository.findAll());
-//        }
-//    }
-
     @GetMapping("/carslist")
-    public ResponseEntity<List<Car>> getCarslist(
+    public ResponseEntity<List<CarDTO>> getCarslist(
             @RequestParam(name = "minEnginePower", required = false) Double minEnginePower,
             @RequestParam(name = "maxEnginePower", required = false) Double maxEnginePower
     ) {
@@ -61,27 +46,15 @@ public class CarController {
     }
 
 
+    @PutMapping("/{id}")
+    public ResponseEntity<CarDTO> updateCar(@PathVariable int id, @RequestBody @Valid CarDTO carUpdatedDTO) {
+        return ResponseEntity.ok(carService.updateCar(id, carUpdatedDTO));
+    }
 
-//    @Transactional
-//    @PutMapping("/cars/{id}")
-//    public ResponseEntity<CarDTO> updateCar(@PathVariable(name = "id") Long carId, @RequestBody Car car) {
-//        return ResponseEntity.of(
-//                carRepository.findById(carId)
-//                        .map(oldCar -> {
-//                            oldCar.setModel(car.getModel());
-//                            oldCar.setEnginePower(car.getEnginePower());
-//                            oldCar.setTorque(car.getTorque());
-//                            return oldCar;
-//                        })
-//        );
-//    }
-//
-//    @DeleteMapping("/cars/{id}")
-//    public ResponseEntity<Car> deleteCar(@PathVariable Long id) {
-//        carRepository.deleteById(id);
-//        return ResponseEntity.noContent().build();
-//    }
-
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CarDTO> deleteCar(@PathVariable int id) {
+        carService.deleteCar(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
