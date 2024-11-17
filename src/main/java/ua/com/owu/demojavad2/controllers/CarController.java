@@ -1,13 +1,10 @@
 package ua.com.owu.demojavad2.controllers;
 
-
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.owu.demojavad2.dto.CarDTO;
-import ua.com.owu.demojavad2.entities.Car;
 import ua.com.owu.demojavad2.service.CarService;
 
 import java.util.*;
