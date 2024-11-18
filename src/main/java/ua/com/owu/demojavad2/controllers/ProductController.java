@@ -25,10 +25,10 @@ public class ProductController {
     // to-do дописать все методы и логику в сервисе
 
 
-    @PostMapping("/{id}/reviews")
-    public ResponseEntity<Review> addReview(@PathVariable int id, @RequestBody Review review) {
-        return ResponseEntity.ok()
-    }
+//    @PostMapping("/{id}/reviews")
+//    public ResponseEntity<Review> addReview(@PathVariable int id, @RequestBody Review review) {
+//        return ResponseEntity.ok()
+//    }
 
 
 }
