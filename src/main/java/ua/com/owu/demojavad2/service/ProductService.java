@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 import ua.com.owu.demojavad2.dto.ProductDTO;
+import ua.com.owu.demojavad2.dto.ReviewDTO;
 import ua.com.owu.demojavad2.entities.Product;
+import ua.com.owu.demojavad2.entities.Review;
 import ua.com.owu.demojavad2.mapper.ProductMapper;
 import ua.com.owu.demojavad2.repository.ProductRepository;
 import ua.com.owu.demojavad2.repository.ReviewRepository;
@@ -45,6 +47,18 @@ public class ProductService {
                 .findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Product not found"));
         return productMapper.mapToDto(product);
+    }
+
+
+    //-------------------------------------------------------------------------------
+
+    public ReviewDTO createReview(Long productId, ReviewDTO addedReview) {
+        if (!this.productRepository.existsById(productId)) {
+            throw new IllegalArgumentException("Product not found");
+        }
+
+        final Review review = this.productMapper.mapToEntity();
+        review.setProductId(productId);
     }
 
 }
