@@ -16,5 +16,5 @@ spring:
         format_sql: true
   data:
     mongodb:
-      uri: mongodb+srv://yuumon1:yuu@cluster0.re97kzg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      database: yuu-db
+      uri: mongodb+srv://yuumon1:yuumon1@cluster0.re97kzg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: nicoledb
