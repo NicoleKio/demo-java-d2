@@ -40,8 +40,8 @@ public class ProductController {
     }
 
     @PostMapping("/{id}/reviews")
-    public ResponseEntity<ReviewDTO> createReview(@PathVariable(name = "id") Long productId, @RequestBody ReviewDTO reviewDTO) {
-        return ResponseEntity.ok(productService.createReview(productId, reviewDTO));
+    public ResponseEntity<ReviewDTO> createReview(@RequestParam Long productId, @RequestBody ReviewDTO reviewDTO) {
+        return ResponseEntity.ok(this.productService.createReview(reviewDTO));
     }
 
 

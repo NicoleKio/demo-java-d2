@@ -8,6 +8,7 @@ import ua.com.owu.demojavad2.dto.ReviewDTO;
 import ua.com.owu.demojavad2.entities.Product;
 import ua.com.owu.demojavad2.entities.Review;
 import ua.com.owu.demojavad2.mapper.ProductMapper;
+import ua.com.owu.demojavad2.mapper.ReviewMapper;
 import ua.com.owu.demojavad2.repository.ProductRepository;
 import ua.com.owu.demojavad2.repository.ReviewRepository;
 
@@ -21,6 +22,8 @@ public class ProductService {
 
     private final ReviewRepository reviewRepository;
     private final ProductRepository productRepository;
+
+    private final ReviewMapper reviewMapper;
     private final ProductMapper productMapper;
 
     // getProducts
@@ -52,13 +55,10 @@ public class ProductService {
 
     //-------------------------------------------------------------------------------
 
-    public ReviewDTO createReview(Long productId, ReviewDTO addedReview) {
-        if (!this.productRepository.existsById(productId)) {
-            throw new IllegalArgumentException("Product not found");
-        }
-
-        final Review review = this.productMapper.mapToEntity();
+    public ReviewDTO createReview(Long productId, ReviewDTO newReviewDTO) {
+        Review review = reviewMapper.mapToEntity(newReviewDTO);
         review.setProductId(productId);
+        return reviewMapper.mapToDTO(reviewRepository.save(review));
     }
 
 }
