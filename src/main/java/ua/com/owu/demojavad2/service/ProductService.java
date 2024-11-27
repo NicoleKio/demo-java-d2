@@ -55,10 +55,25 @@ public class ProductService {
 
     //-------------------------------------------------------------------------------
 
-    public ReviewDTO createReview(Long productId, ReviewDTO newReviewDTO) {
-        Review review = reviewMapper.mapToEntity(newReviewDTO);
+    public ReviewDTO createReview(Long productId, ReviewDTO reviewDTO) {
+        if (!this.productRepository.existsById(productId)) {
+            throw new IllegalArgumentException("Product not found");
+        }
+        final Review review = this.reviewMapper.mapToEntity(reviewDTO);
         review.setProductId(productId);
-        return reviewMapper.mapToDTO(reviewRepository.save(review));
+        return this.reviewMapper.mapToDTO(this.reviewRepository.save(review));
     }
+
+//    public List<ReviewDTO> findAllReviews(){
+//        return reviewRepository
+//                .findAll()
+//                .stream()
+//                .map(reviewMapper::mapToDTO)
+//                .toList();
+//    }
+
+//    public ReviewDTO findAllReviewsFromProduct(Long productId) {
+//        return
+//    }
 
 }
