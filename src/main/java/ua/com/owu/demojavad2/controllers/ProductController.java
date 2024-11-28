@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 @RequestMapping("/products")
 public class ProductController {
 
-    private final ProductRepository productRepository   ;
+    private final ProductRepository productRepository;
     private final ProductService productService;
 
     @GetMapping()
