@@ -1,15 +1,13 @@
 package ua.com.owu.demojavad2.repository;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ua.com.owu.demojavad2.entities.Product;
 
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends MongoRepository<Product, ObjectId> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllByPriceBetween(Double minPrice, Double maxPrice);
 

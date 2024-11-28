@@ -45,7 +45,7 @@ public class ProductService {
 
     // getProductById
 
-    public ProductDTO getById(ObjectId id) {
+    public ProductDTO getById(Long id) {
         Product product = productRepository
                 .findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Product not found"));

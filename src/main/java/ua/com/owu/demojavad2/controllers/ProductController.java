@@ -35,13 +35,13 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProduct(@PathVariable ObjectId id) {
+    public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getById(id));
     }
 
     @PostMapping("/{id}/reviews")
-    public ResponseEntity<ReviewDTO> createReview(@RequestParam Long productId, @RequestBody ReviewDTO reviewDTO) {
-        return ResponseEntity.ok(this.productService.createReview(reviewDTO));
+    public ResponseEntity<ReviewDTO> createReview(@PathVariable(name = "id") Long productId, @RequestBody ReviewDTO reviewDTO) {
+        return ResponseEntity.ok(this.productService.createReview(productId, reviewDTO));
     }
 
 
