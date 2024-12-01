@@ -12,6 +12,7 @@ import ua.com.owu.demojavad2.mapper.ReviewMapper;
 import ua.com.owu.demojavad2.repository.ProductRepository;
 import ua.com.owu.demojavad2.repository.ReviewRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -61,19 +62,16 @@ public class ProductService {
         }
         final Review review = this.reviewMapper.mapToEntity(reviewDTO);
         review.setProductId(productId);
+        review.setTimestamp(LocalDateTime.now());
         return this.reviewMapper.mapToDTO(this.reviewRepository.save(review));
     }
 
-//    public List<ReviewDTO> findAllReviews(){
-//        return reviewRepository
-//                .findAll()
-//                .stream()
-//                .map(reviewMapper::mapToDTO)
-//                .toList();
-//    }
-
-//    public ReviewDTO findAllReviewsFromProduct(Long productId) {
-//        return
-//    }
+    public List<ReviewDTO> findAllReviewsForProduct(Long productId) {
+        return this.reviewRepository
+                .findAllByProductId(productId)
+                .stream()
+                .map(this.reviewMapper::mapToDTO)
+                .toList();
+    }
 
 }
